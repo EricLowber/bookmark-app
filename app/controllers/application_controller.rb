@@ -4,7 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   def hello
-    render text: "<h1>Hello</h1><p>Welcome home</p>"
   end
    
-end
+  private
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]    
+  end
+  helper_method :current_user
+ end
