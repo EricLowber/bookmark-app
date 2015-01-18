@@ -36,8 +36,9 @@ group :production do
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'faker'
-# Use unicorn as the app server
-# gem 'unicorn'
+
+ gem 'figaro', '1.0'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -45,3 +46,8 @@ gem 'faker'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development, :test do  
+  gem 'rspec-rails'  
+  gem 'capybara'  
+  gem 'launchy'  
+end  
