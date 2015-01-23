@@ -4,16 +4,12 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(user_params)
+    @user = User.new(params.require(:user).permit(:email, :password, :password_confirmation))
     if @user.save
-       UserMailer.welcome_email(@user).deliver_later
-      redirect_to root_url, notice: "Thanks for signing up!"
+       session[:user_id] = @user.id
+       redirect_to root_url, notice: "Thanks for signing up!"
     else 
       render "new"
     end
-  end
-  
-  def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
-  end  
+  end   
 end
