@@ -14,7 +14,9 @@
 ActiveRecord::Schema.define(version: 20150118002825) do
 
   create_table "bookmarks", force: true do |t|
+    t.string   "name"
     t.string   "url"
+    t.integer  "user_id"
     t.integer  "topic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -29,7 +31,6 @@ ActiveRecord::Schema.define(version: 20150118002825) do
 
   create_table "topics", force: true do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -17,12 +17,12 @@ class IncomingController < ApplicationController
      url = params["stripped-text"]
      
      # Check if user is nil, if so, create and save a new user
-     # if user.nil? 
-     #    user = User.new(
-     #      email: params[:sender],
-     #      password: 'helloworld')
-     #    user.save
-     # end
+     if user.nil? 
+        user = User.new(
+          email: params[:sender],
+          password: 'helloworld')
+        user.save
+     end
     
      if topic.nil? 
         topic = Topic.new(

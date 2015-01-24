@@ -1,5 +1,5 @@
 class Likes < ActiveRecord::Base
   belongs_to :user
-  belongs_to :bookmarks
+  belongs_to :bookmark
   
 end
