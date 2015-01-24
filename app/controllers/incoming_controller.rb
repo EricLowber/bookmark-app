@@ -14,8 +14,7 @@ class IncomingController < ApplicationController
 
      user = User.find_by_email(params[:sender])  
      topic = Topic.find_by_name(params[:subject])
-     url = params["stripped-text"]
-     
+     url = /.*(http:\/\/.*|https:\/\/.*)".*/.match(params[stripped-html])[1]
      # Check if user is nil, if so, create and save a new user
      if user.nil? 
         user = User.new(
@@ -31,7 +30,7 @@ class IncomingController < ApplicationController
         topic.save
      end
      # Check if the topic is nil, if so, create and save a new topic
-    bookmark = Bookmark.new(url: url, topic: topic)
+    bookmark = Bookmark.new(url: url)
     bookmark.save
      # Now that we're sure we have a valid user and topic, build and save a new bookmark
 
