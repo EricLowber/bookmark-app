@@ -30,7 +30,7 @@ class IncomingController < ApplicationController
         topic.save
      end
      # Check if the topic is nil, if so, create and save a new topic
-    bookmark = Bookmark.new(url: url)
+    bookmark = Bookmark.new(url: url, user: user, topic: topic)
     bookmark.save
      # Now that we're sure we have a valid user and topic, build and save a new bookmark
 
