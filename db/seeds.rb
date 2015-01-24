@@ -2,39 +2,41 @@ require 'faker'
 
 #create users
 10.times do 
-  user = User.new{
-    name:  Faker::Name.name,
+  user = User.new(
+    name: Faker::Name.name,
     email: Faker::Internet.email,
     password: 'helloworld'
-  }
+  )
   user.save!  
 end
 users=User.all
 
-# create bookmarks
-30.times do 
-    Bookmark.create{
-    topic: topic.sample,
-    url: Faker::Internet.url
-    }
-  end
-  bookmarks = Bookmark.all
 
 # create topics
 10.times do
-  Topic.create{
-    name: Faker::Name.name
-    user: user.sample
-  }
-end
-topics= Topic.all
+    Topic.create(
+    name: Faker::Name.name,
+    user: users.sample
+    )
+  end
+  topics= Topic.all
+
+# create bookmarks
+30.times do 
+    Bookmark.create(
+    url: Faker::Internet.url,
+    topic: topics.sample
+    )
+  end
+  bookmarks = Bookmark.all
+
 
 #create admin
-admin = User.new{
-  name: 'admin'
-  email: 'admin@example.com'
+admin = User.new(
+  name: 'admin',
+  email: 'admin@example.com',
   password: 'helloworld'
-}
+)
 admin.save
 
 puts 'Seed Finished'
