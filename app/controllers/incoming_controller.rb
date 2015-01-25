@@ -16,8 +16,9 @@ class IncomingController < ApplicationController
      topic = Topic.find_by_name(params[:subject])
 
      body = params["body-html"]
-     url = body.scan(/https?:\/\/[\S]+/)
-     # url = /.*(http:\/\/.*|https:\/\/.*)".*/.match(params[stripped-html])[1]
+     url = body.scan(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
+   
+    
      # Check if user is nil, if so, create and save a new user
      if user.nil? 
         user = User.new(
