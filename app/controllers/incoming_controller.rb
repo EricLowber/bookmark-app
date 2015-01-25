@@ -15,9 +15,10 @@ class IncomingController < ApplicationController
      user = User.find_by_email(params[:sender])  
      topic = Topic.find_by_name(params[:subject])
 
-     url = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.match(params[stripped-html])[1]
+     url = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.match(params[:'stripped-html'])[1]
    
     
+
 
      # Check if user is nil, if so, create and save a new user
      if user.nil? 
