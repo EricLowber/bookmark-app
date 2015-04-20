@@ -1,5 +1,12 @@
 <h1>Bookmarks</h1>
 
-<%= @bookmarks.each do |bookmark| %>
-   <p><%= link_to bookmark.name, bookmark.url, :target => "_blank" %></p>
+
+<% @bookmarks.each do |bookmark| %>
+   <div class="media">
+     <div class="media-body">
+       <h4 class="media-heading"><br>
+         <%= link_to bookmark.url, bookmark.url, :target => "_blank" %>
+       </h4>
+     </div>
+   </div>
 <% end %>
